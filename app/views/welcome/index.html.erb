@@ -1,74 +1,66 @@
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">gCamp</a>
-    </div>
+    <p class="navbar-brand">gCamp</p>
   </div>
 </nav>
 
-<div>
-
-
-<div class="container jumbotron">
-  <h1>gCamp</h1>
-  <br>
-  <p>Your life, organized.</p>
-</div>
-
 <div class="container">
 
-<div class="row">
-  <div class="col-sm-6 col-md-4">
-    <a href="#" class="thumbnail">
-      <%=image_tag "tablet_guy.jpg"%>
-    </a>
-  </div>
-  <div class="col-sm-6 col-md-4">
-    <a href="#" class="thumbnail">
-      <%=image_tag "pen_guy.jpg"%>
-    </a>
-  </div>
-  <div class="col-sm-6 col-md-4">
-    <a href="#" class="thumbnail">
-      <%=image_tag "laptop_guy.jpg"%>
-    </a>
-  </div>
-</div>
-
-</div>
-
-<div class="container">
-
-  <div class="col-sm-6 col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel-body">
-        Tasks
-      </div>
-      <div class="panel-footer">Grouped by projects and lists. Just the way you like'em</div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel-body">
-        Permissions
-      </div>
-      <div class="panel-footer">Fine-grained permissions</div>
-    </div>
-  </div>
-  <div class="col-sm-6 col-md-4">
-    <div class="panel panel-primary">
-      <div class="panel-body">
-        Comments
-      </div>
-      <div class="panel-footer">Comment on tasks and documents <br>
-      Get email notifications
+  <div class="jumbotron">
+    <div class="container">
+      <p><h1>gCamp</h1></p>
+      <p> your life, organized
       </div>
     </div>
-  </div>
+    <div class=row >
+      <div class="col-md-4">
+        <%=image_tag("tablet_guy.jpg", class: "img-responsive")%>
+      </div>
+      <div class="col-md-4">
+        <%=image_tag("pen_guy.jpg", class: "img-responsive")%>
+      </div>
+      <div class="col-md-4">
+        <%=image_tag("laptop_guy.jpg", class: "img-responsive")%>
+      </div>
+    </div>
 
-</div>
-</div>
+    <p></p><p></p>
+
+    <div class=row >
+      <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Tasks</h3>
+          </div>
+          <div class="panel-body">
+            Grouped by projects and lists. Just the way you like'em
+          </div>
+        </div>
+
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Permissions</h3>
+          </div>
+          <div class="panel-body">
+            Fine-grained permissions
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="panel panel-primary">
+          <div class="panel-heading">
+            <h3 class="panel-title">Comments</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <li>Comment on tasks and documents</li>
+              <li>Get email notifications</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
