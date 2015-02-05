@@ -2,6 +2,11 @@
 <h3>Description</h3>
   <% @tasks.each do |task| %>
     <div>
-      <p><%= link_to task.title, task_path(task) %></p>
+      <p><%= link_to task.description, task_path(task) %></p>
     </div>
   <% end %>
+
+<br/>
+<div>
+  <p><%= link_to "New Task", new_task_path %></p>
+</div>
