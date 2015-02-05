@@ -3,4 +3,6 @@ Rails.application.routes.draw do
  get '/about', to: 'about#index'
  get '/terms', to: 'terms#index'
  get '/faq', to: 'common_questions#index'
+
+ resources :tasks
 end
