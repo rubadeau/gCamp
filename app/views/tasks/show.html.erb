@@ -1,7 +1,9 @@
 <div class= "container">
-  <h3>Listing Tasks</h3>
+  
+  <div></div>
     <h5>Description</h5>
       <%= @task.description %>
+    <br></br>
       <%= link_to 'Show', task_path(@task) %>
       <%= link_to 'Edit', edit_task_path(@task) %>
       <%= link_to 'Destroy', task_path(@task), method: :delete %>

@@ -17,6 +17,11 @@ class TasksController < ApplicationController
 
   def show
     @task = Task.find(params[:id])
+    if @task.create(task_params)
+      flash[:notice] = "Task was successfully created"
+    else
+      render :new
+    end
   end
 
   def edit
