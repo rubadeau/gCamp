@@ -1,7 +1,7 @@
 <div class= "container">
   <h3>New Task</h3>
   <br/>
-  <%= form_for Task.new do |f| %>
+  <%= form_for @task do |f| %>
     <p><%= f.label :description %></p>
     <p><%= f.text_field :description %></p>
     <%= f.submit "Create Task" %>

@@ -5,23 +5,21 @@ class TasksController < ApplicationController
   end
 
   def new
-    @tasks = Task.new
+    @task = Task.new
   end
 
   def create
-    task = Task.new(task_params)
-    task.save
-
-    redirect_to task_path(task)
+    @task = Task.new(task_params)
+    if @task.save
+      flash[:notice] = "Task was successfully created"
+      redirect_to task_path(@task)
+    else
+      render :new
+    end
   end
 
   def show
     @task = Task.find(params[:id])
-    if @task.create(task_params)
-      flash[:notice] = "Task was successfully created"
-    else
-      render :new
-    end
   end
 
   def edit
