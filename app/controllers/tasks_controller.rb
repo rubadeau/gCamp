@@ -12,7 +12,7 @@ class TasksController < ApplicationController
     task = Task.new(task_params)
     task.save
 
-    redirect_to tasks_path
+    redirect_to task_path(task)
   end
 
   def show
@@ -27,7 +27,7 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update(task_params)
-      redirect_to tasks_path
+      redirect_to task_path(task)
     else
       render :edit
     end
