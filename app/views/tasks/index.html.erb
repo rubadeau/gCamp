@@ -11,8 +11,8 @@
         <th>Description<th>
       </tr>
     </thead>
+    <% @tasks.each do |task| %>
       <tr>
-        <% @tasks.each do |task| %>
           <td><%= link_to task.description, task_path(task) %></td>
         <% end %>
       </tr>
