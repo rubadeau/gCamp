@@ -14,29 +14,34 @@
       </div>
     </nav>
   </div>
-<%= yield %>
+
+
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+
+  <%= yield %>
 
 
 
-<footer class="container">
-  <div class="page-header">
-  </div>
-    <div class='container'
-      <div class='row'
-        <div class='col-md-6 text-left'>
-          <%= link_to 'About', about_path %> |
-          <%= link_to 'Terms', terms_path %> |
-          <%= link_to 'FAQs', faq_path %> |
-          <%= link_to 'Tasks', tasks_path %>
-          <%= link_to image_tag('gschool.png', class: 'social'), 'https://students.gschool.it/cohorts/8/students/267' %>
-          <%= link_to image_tag('tw.png', class: 'social'), 'http://www.twitter.com/GitTristan' %>
-          <%= link_to image_tag('gh.png', class: 'social'), 'http://www.github.com/GitTristan' %>
-          <%= link_to image_tag('li.jpg', class: 'social'), 'https://www.linkedin.com/in/tristanrubadeau' %>
+  <footer class="container">
+    <div class="page-header">
+    </div>
+      <div class='container'
+        <div class='row'
+          <div class='col-md-6 text-left'>
+            <%= link_to 'About', about_path %> |
+            <%= link_to 'Terms', terms_path %> |
+            <%= link_to 'FAQs', faq_path %> |
+            <%= link_to 'Tasks', tasks_path %>
+            <%= link_to image_tag('gschool.png', class: 'social'), 'https://students.gschool.it/cohorts/8/students/267' %>
+            <%= link_to image_tag('tw.png', class: 'social'), 'http://www.twitter.com/GitTristan' %>
+            <%= link_to image_tag('gh.png', class: 'social'), 'http://www.github.com/GitTristan' %>
+            <%= link_to image_tag('li.jpg', class: 'social'), 'https://www.linkedin.com/in/tristanrubadeau' %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <p> </p>
-</footer>
+  </footer>
 </body>
 </html>
