@@ -1,6 +1,6 @@
 <div class= "container">
   <div class="page-header">
-    <div class="btn btn-info pull-right", "<%= link_to "New Task", new_task_path %>
+    <div class="btn btn-info pull-right"><%= link_to "New Task", new_task_path %>
     </div>
       <h1>Tasks</h1>
     </div>
@@ -12,8 +12,10 @@
         </thead>
         <% @tasks.each do |task| %>
           <tr>
-            <td><%= link_to task.description, task_path(task) %></td>
+            <td><%= link_to task.description, task_path(task) %>
+              <div class= "btn btn-danger pull-right"><%= link_to "Delete", task_path(task), method: :delete %></div>
+                <div class= "btn btn-info pull-right"><%= link_to "Edit", edit_task_path(task) %></td></div>
             <% end %>
           </tr>
       </table>
-</div>
+    </div>
