@@ -1,21 +1,19 @@
 <div class= "container">
-  <h1>Listing Tasks</h1>
-
-  <div>
-    <p><%= link_to "New Task", new_task_path %></p>
-  </div>
-
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Description<th>
-      </tr>
-    </thead>
-    <% @tasks.each do |task| %>
-      <tr>
-          <td><%= link_to task.description, task_path(task) %></td>
-        <% end %>
-      </tr>
-  </table>
-
+  <div class="page-header">
+    <div class="btn btn-info pull-right", "<%= link_to "New Task", new_task_path %>
+    </div>
+      <h1>Tasks</h1>
+    </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Description<th>
+          </tr>
+        </thead>
+        <% @tasks.each do |task| %>
+          <tr>
+            <td><%= link_to task.description, task_path(task) %></td>
+            <% end %>
+          </tr>
+      </table>
 </div>
