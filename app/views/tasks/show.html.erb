@@ -1,11 +1,14 @@
 <div class= "container">
-  
-  <div></div>
-    <h5>Description</h5>
-      <%= @task.description %>
-    <br></br>
-      <%= link_to 'Show', task_path(@task) %>
-      <%= link_to 'Edit', edit_task_path(@task) %>
-      <%= link_to 'Destroy', task_path(@task), method: :delete %>
+  <div class="page-header">
+    <h1><%= @task.description %>
+      <div class= "btn btn-info pull-right"><%= link_to "Edit", edit_task_path(@task) %></div>
+    </h1>
+  </div>
+
+  <ol class="breadcrumb">
+    <li><%= root_path %><a>Home</a></li>
+    <li><a href="tasks_path">Tasks</a></li>
+    <li class="active"><%= @task.description %> </li>
+  </ol>
 
 </div>
