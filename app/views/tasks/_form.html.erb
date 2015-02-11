@@ -1,8 +1,14 @@
 <%=form_for @task, html:{class:"form-horizontal"} do |f|%>
   <div class="form-group">
-     <%=f.label :description, class:"col-md-2 control-label"%>
-     <%=f.text_field :description, class:"col-md-4"%>
-     <%= f.check_box :complete %>
+     <%= f.label :description, class:"col-md-2 control-label"%>
+     <%= f.text_field :description, class:"col-md-4"%>
+  </div>
+
+  <div class="form-group">
+    <div class= "col-md-offset-2">
+      <%= f.check_box :complete %>
+      <%= f.label :complete %>
+    </div>
   </div>
 
   <div class="form-group">
