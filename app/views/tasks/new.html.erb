@@ -11,14 +11,5 @@
   </div>
 
   <br>
-    <%=form_for @task, html:{class:"form-horizontal"} do |f|%>
-   <div class="form-group">
-     <%=f.label :description, class:"col-md-2 control-label"%>
-     <%=f.text_field :description, class:"col-md-4"%>
-  </div>
 
-  <div class="form-group">
-     <%= f.submit "Create Task", class: "btn btn-primary col-md-offset-2" %>
-     <%= link_to "Cancel", tasks_path, class:"btn btn-default"%>
-  </div>
-<% end %>
+<%= render partial: "form", locals: {button_name: "Create Task"} %>
