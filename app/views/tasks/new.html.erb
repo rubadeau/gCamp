@@ -3,22 +3,22 @@
       <h1>New Task</h1>
     </div>
 
-<%= link_to "Tasks", tasks_path %> > New Task
-
-  <form class="form-horizontal">
-    <div class="form-group">
-      <label for="new_task" class="col-sm-2 control-label">Description</label>
-        <div class="col-sm-3">
-      <input type="description" class="form-control" id="new_task">
-    </div>
+  <div>
+     <ol class="breadcrumb">
+         <li><%=link_to "Tasks", tasks_path%></li>
+         <li class="active">New Task</li>
+     </ol>
   </div>
 
-    <div class="form-group">
-      <div class="col-sm-offset-2 col-sm-3">
-        <%= @task.submit "Create Task", "#", class: "btn btn-primary" %>
-        <%= @task.submit "Cancel", "#", class: "btn btn-primary" %>
-        <button type="cancel" class="btn btn-default">Cancel</button>
-      </div>
-    </div>
-  </form>
-</div>
+  <br>
+    <%=form_for @task, html:{class:"form-horizontal"} do |f|%>
+   <div class="form-group">
+     <%=f.label :description, class:"col-md-2 control-label"%>
+     <%=f.text_field :description, class:"col-md-4"%>
+  </div>
+
+  <div class="form-group">
+     <%= f.submit "Create Task", class: "btn btn-primary col-md-offset-2" %>
+     <%= link_to "Cancel", tasks_path, class:"btn btn-default"%>
+  </div>
+<% end %>
