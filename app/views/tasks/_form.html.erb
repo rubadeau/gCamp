@@ -2,27 +2,27 @@
 
  <%= form_for @task do |f| %>
 
- <div class="form-group">
-   <%= f.label :description, class: "col-sm-1 control-label" %>
-   <div class="col-sm-6">
-     <%= f.text_field :description, class: "form-control", placeholder: "Description" %>
-   </div>
- </div>
 
- <div class="form-group">
-   <div class= "col-md-offset-1 col-md-3">
-     <%= f.check_box :complete %>
-     <%= f.label :complete %>
+   <div class="form-group">
+     <%= f.label :description, class: "col-md-1 control-label" %>
+     <div class="col-md-5">
+       <%= f.text_field :description, class: "form-control", placeholder: "Description" %>
+     </div>
    </div>
- </div>
+
+   <div class="form-group">
+     <div class="col-md-offset-1">
+       <%= f.check_box :complete %>
+       <%= f.label :complete %>
+     </div>
+   </div>
 
 
- <div class="form-group">
-   <div class="col-sm-offset-1 col-sm-6">
-     <%= f.submit class: "btn btn-primary"%>
-     <%= link_to "Cancel", tasks_path, class: "btn btn-default" %>
+   <div class="form-group">
+     <div class="col-md-offset-1">
+       <%= f.submit class: "btn btn-primary"%>
+       <%= link_to "Cancel", tasks_path, class: "btn btn-default" %>
+     </div>
    </div>
- </div>
  <% end %>
- 
 </div>
