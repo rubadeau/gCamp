@@ -8,7 +8,8 @@
       <table class="table">
         <thead>
           <tr>
-            <th>Description<th>
+            <th>Description</th>
+            <th>Due On</th>
           </tr>
         </thead>
         <% @tasks.each do |task| %>
@@ -17,8 +18,15 @@
               <% if task.complete == true %>
                 <s><%= link_to task.description, task_path(task) %></s>
               <% else %>
-                <%= link_to task.description , task_path(task) %>
+                <%= link_to task.description, task_path(task) %>
               <% end %>
+            </td>
+            <td>
+              <div class= "text-left">
+                <% if task.due_date %>
+                  <%= task.due_date.strftime("%m/%d/%Y") %>
+                <% end %>
+              </div>
             </td>
             <td>
               <div class= "text-right">
