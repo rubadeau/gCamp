@@ -14,7 +14,11 @@
         <% @tasks.each do |task| %>
           <tr>
             <td>
-              <%= link_to task.description, task_path(task) %>
+              <% if task.complete == true %>
+                <s><%= link_to task.description, task_path(task) %></s>
+              <% else %>
+                <%= link_to task.description , task_path(task) %>
+              <% end %>
             </td>
             <td>
               <div class= "text-right">
