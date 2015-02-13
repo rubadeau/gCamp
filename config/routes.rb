@@ -5,4 +5,5 @@ Rails.application.routes.draw do
  get '/faq', to: 'common_questions#index'
 
  resources :tasks
+ resources :users
 end

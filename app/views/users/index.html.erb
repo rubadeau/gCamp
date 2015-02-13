@@ -1,0 +1,24 @@
+<div class= "container">
+  <div class="page-header">
+    <div class="pull-right">
+      <%= link_to "New User", new_user_path, class: "btn btn-info" %>
+    </div>
+      <h1>Users</h1>
+    </div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+        <% @users.each do |user| %>
+          <tr>
+            <td><%= user.first_name+" "+user.last_name %>
+            </td>
+            <td><%= link_to user.email %>
+            </td>
+            <% end %>
+          </tr>
+      </table>
+    </div>
