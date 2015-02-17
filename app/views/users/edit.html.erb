@@ -4,3 +4,5 @@
     </div>
 
   <%= render partial: "form", locals: {button_name: "Update User"} %>
+
+  <%= link_to  "Delete", user_path(@user), method: :delete, class: "btn btn-danger" %>
