@@ -16,7 +16,7 @@
           <tr>
             <td><%= link_to user.first_name+" "+user.last_name, user_path(user) %>
             </td>
-            <td><%= user.email %>
+            <td><%= mail_to user.email %>
             </td>
             <td><%= link_to "Edit", edit_user_path(user), class: "pull-right" %>
             <% end %>
