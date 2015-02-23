@@ -6,7 +6,7 @@
     <div class="col-md-offset-2">
       <% if @user.errors.any? %>
         <div class="alert alert-danger">
-          <h2><%= pluralize(@user.errors.count, "error") %> prohibited theis form from being saved</h2>
+          <h2><%= pluralize(@user.errors.count, "error") %> prohibited this form from being saved</h2>
           <ul>
             <% @user.errors.full_messages.each do |msg| %>
             <li> <%= msg %> </li>
