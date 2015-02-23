@@ -2,6 +2,19 @@
   <div class="page-header">
     <h1>New Project</h1>
   </div>
+  <div class="col-md-offset-2">
+    <% if @project.errors.any? %>
+      <div class="alert alert-danger">
+        <h2><%= pluralize(@project.errors.count, "error") %> prohibited theis form from being saved</h2>
+        <ul>
+          <% @project.errors.full_messages.each do |msg| %>
+          <li> <%= msg %> </li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
+    </div>
+    <br />
 
   <%= render partial: "form", locals: {button_name: "Create Project"} %>
 
