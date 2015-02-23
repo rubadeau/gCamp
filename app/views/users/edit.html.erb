@@ -7,8 +7,7 @@
 
   <div class="well well-sm col-md-3 col-md-offset-2">
     <div class="text-center">
-      <%= link_to  "Delete User", user_path(@user), method: :delete, class: "btn btn-danger" %>
+      <%= link_to  "Delete User", user_path(@user), method: :delete, class: "btn btn-danger",data: { confirm: "Are you sure?" }  %>
     </div>
   </div>
   <br />
-  
