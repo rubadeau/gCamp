@@ -2,22 +2,7 @@
   <div class="page-header">
     <h1>Edit Project</h1>
   </div>
-    <div class="row">
-      <div class="col-md-offset-2 col-md-7">
-        <% if @project.errors.any? %>
-          <div class="alert alert-danger">
-            <h3> <%= pluralize(@project.errors.count, "error") %> prohibited this form from being saved</h3>
-              <ul>
-                <% @project.errors.full_messages.each do |msg| %>
-                <li> <%= msg %> </li>
-                <% end %>
-              </ul>
-            </div>
-            <% end %>
-          </div>
-        </div>
-      <br />
-
+  <%= render partial: "shared/errors", locals: {object: @project} %>
   <%= render partial: "form", locals: {button_name: "Update Project"} %>
 
 </div>

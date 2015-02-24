@@ -10,21 +10,7 @@
        </ol>
     </div>
 
-    <div class="row">
-      <div class="col-md-offset-2 col-md-7">
-        <% if @user.errors.any? %>
-          <div class="alert alert-danger">
-            <h3><%= pluralize(@user.errors.count, "error") %> prohibited this form from being saved</h3>
-            <ul>
-              <% @user.errors.full_messages.each do |msg| %>
-              <li> <%= msg %> </li>
-              <% end %>
-            </ul>
-          </div>
-          <% end %>
-        </div>
-      </div>
-    <br />
+  <%= render partial: "shared/errors", locals: { object: @user} %>
 
   <%= render partial: "form", locals: {button_name: "Update User"} %>
 
