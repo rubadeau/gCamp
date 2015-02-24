@@ -2,19 +2,20 @@
   <div class="page-header">
     <h1>Edit Project</h1>
   </div>
-
-  <div class="col-md-offset-2">
-    <% if @project.errors.any? %>
-      <div class="alert alert-danger">
-        <h2> <%= pluralize(@project.errors.count, "error") %> prohibited this form from being saved</h2>
-          <ul>
-            <% @project.errors.full_messages.each do |msg| %>
-            <li> <%= msg %> </li>
+    <div class="row">
+      <div class="col-md-offset-2 col-md-7">
+        <% if @project.errors.any? %>
+          <div class="alert alert-danger">
+            <h3> <%= pluralize(@project.errors.count, "error") %> prohibited this form from being saved</h3>
+              <ul>
+                <% @project.errors.full_messages.each do |msg| %>
+                <li> <%= msg %> </li>
+                <% end %>
+              </ul>
+            </div>
             <% end %>
-          </ul>
+          </div>
         </div>
-        <% end %>
-      </div>
       <br />
 
   <%= render partial: "form", locals: {button_name: "Update Project"} %>

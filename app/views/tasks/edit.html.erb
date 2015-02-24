@@ -1,17 +1,19 @@
 <div class= "container">
   <h3>Update Task</h3>
   <br />
-  <div class="col-md-offset-2">
-    <% if @task.errors.any? %>
-    <div class="alert alert-danger">
-      <h2><%= pluralize(@task.errors.count, "error") %> prohibited this form from being saved</h2>
-    <ul>
-      <% @task.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-        <% end %>
-      </ul>
+  <div class="row">
+    <div class="col-md-offset-2 col-md-7">
+      <% if @task.errors.any? %>
+      <div class="alert alert-danger">
+        <h3><%= pluralize(@task.errors.count, "error") %> prohibited this form from being saved</h3>
+      <ul>
+        <% @task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+      <% end %>
     </div>
-    <% end %>
   </div>
   <br />
     <%= render partial: "form", locals: {button_name: "Update Task"} %>
