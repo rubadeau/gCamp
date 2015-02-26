@@ -7,4 +7,5 @@ But this one is mine
 
 Travis CI
 
-![](url-goes-here)
+
+![](https://travis-ci.org/GitTristan/gCamp.svg?branch=master)
