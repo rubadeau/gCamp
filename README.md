@@ -5,7 +5,10 @@ There are many like it
 But this one is mine
 
 
-Travis CI
+<br />
+
+
+![Travis CI](https://travis-ci.org/GitTristan/gCamp)  
 
 
 ![](https://travis-ci.org/GitTristan/gCamp.svg?branch=master)
