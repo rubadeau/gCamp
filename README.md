@@ -8,7 +8,7 @@ But this one is mine
 <br />
 
 
-![Travis CI](https://travis-ci.org/GitTristan/gCamp)  
+[GitTristan's Travis CI](https://travis-ci.org/GitTristan/gCamp)  
 
 
 ![](https://travis-ci.org/GitTristan/gCamp.svg?branch=master)
