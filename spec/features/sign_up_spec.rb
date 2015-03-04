@@ -12,8 +12,8 @@ feature 'Sign Up' do
     fill_in :user_email, with: 'test@test.com'
     fill_in :user_password, with: 'password'
     fill_in :user_password_confirmation, with: 'password'
-    #within("form") {click_on 'Sign Up'}
-    click_on 'Sign Up'
+
+    within("form") {click_on 'Sign Up'}
 
     expect(current_path).to eq '/'
     expect(page).to have_content("You have successfully signed up")
