@@ -9,18 +9,30 @@
 <body>
   <div class="container">
     <nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <p class="navbar-brand">gCamp</p>
+        <div class="container">
+          <%=link_to("gCamp", root_path, class:"navbar-brand") %>
+          <ul class="nav navbar-nav navbar-right">
+            <% if current_user %>
+              <li><%= link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user) %></li>
+              <li><%= link_to "Sign out", sign_out_path %></li>
+            <% else %>
+              <li><%= link_to "Sign In", sign_in_path %></li>
+              <li><%= link_to "Sign Up", sign_up_path %></li>
+            <% end %>
+          </ul>
       </div>
     </nav>
 
 
+  <div class="container">
+    <% if flash[:notice]%>
+      <div class = "alert alert-success">
+        <%= flash[:notice] %>
+      </div>
+    <%end%>
 
-  <% if flash[:notice] %>
-  <div class="alert alert-success text-center" role="alert"><%= flash[:notice] %></div>
-  <% end %>
+  </div>
 </div>
-
   <%= yield %>
 
 

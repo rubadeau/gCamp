@@ -1,0 +1,36 @@
+<div class="col-sm-12">
+  <div class="well col-sm-6 col-sm-offset-3">
+    <div class="form-group">
+      <h1 class = "page-header">Sign into gCamp</h1>
+      <% if flash[:failure] %>
+        <strong><p class="text-danger"><%= flash[:failure] %></p></strong>
+      <% end %>
+      <% form_tag sign_in_path, html: {class: "form-horizontal"} %>
+
+    </div>
+        <% labels_and_field_types = {
+            email: :email_field_tag,
+            password: :password_field_tag,
+          } %>
+        <% labels_and_field_types.each do |label, field_type| %>
+          <div class="form-group">
+            <div class="row">
+              <div class="col-sm-6  ">
+                <%= label_tag label, nil, class: "control-label" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-12">
+                <%= send(field_type, label, nil, class: 'form-control') %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <div class = "form-group">
+          <div class="pull-left">
+            <%= submit_tag  "Sign In", class: "btn btn-default" %>
+          </div>
+        </div>
+  </div>
+</div>
