@@ -1,22 +1,24 @@
 require 'rails_helper'
 
-feature 'User signs up' do
+feature 'Sign Up' do
 
-  xscenario 'allows a user to sign up (sans validations)' do
+  scenario 'user can sign up' do
     visit root_path
-    expect(page).to have_content 'gCamp'
+    click_on 'Sign Up'
+    expect(page).to have_content("Sign up for gCamp!")
 
-    click_link 'Sign up'
-    expect(current_path).to eq '/sign-up'
-    expect(page).to have_content 'Sign Up Form'
-
-    fill_in :user_email, with: 'testMcTesterson@example.com'
+    fill_in :user_first_name, with: 'Test'
+    fill_in :user_last_name, with: 'User'
+    fill_in :user_email, with: 'test@test.com'
     fill_in :user_password, with: 'password'
-    click_button 'Create User'
+    fill_in :user_password_confirmation, with: 'password'
+    #within("form") {click_on 'Sign Up'}
+    click_on 'Sign Up'
 
-    expect(current_path).to eq 'welcome#index'
-    expect(page).to have_content 'your life, organized'
-    # hint: flash notice...
-    expect(page).to have_content 'Successfully signed up'
+    expect(current_path).to eq '/'
+    expect(page).to have_content("You have successfully signed up")
+    expect(page).to have_content('Test User')
+    expect(page).to have_no_content( 'Sign Up')
   end
+
 end
