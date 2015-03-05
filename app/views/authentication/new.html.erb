@@ -5,32 +5,28 @@
       <% if flash[:failure] %>
         <strong><p class="text-danger"><%= flash[:failure] %></p></strong>
       <% end %>
-      <% form_tag sign_in_path, html: {class: "form-horizontal"} %>
+        <div class="form-horizontal">
+          <%= form_for user do |f| %>
+           <div class="form-group">
+             <%= f.label :email, class: "col-sm-6 control-label" %>
+             <div class="col-md-3">
+               <%= f.email_field :email, class: "col-sm-12 form-control" %>
+             </div>
+           </div>
 
+           <div class="form-group">
+             <%= f.label :password, class: "col-sm-6 control-label" %>
+             <div class="col-md-3">
+               <%= f.password_field :password, class: "col-sm-12 form-control" %>
+             </div>
+           </div>
+         <div class="form-group">
+           <div class="col-sm-6 pull-left">
+             <%= f.submit class: "btn btn-default"%>
+           </div>
+         </div>
+       <% end %>
+      </div>
     </div>
-        <% labels_and_field_types = {
-            email: :email_field_tag,
-            password: :password_field_tag,
-          } %>
-        <% labels_and_field_types.each do |label, field_type| %>
-          <div class="form-group">
-            <div class="row">
-              <div class="col-sm-6  ">
-                <%= label_tag label, nil, class: "control-label" %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-sm-12">
-                <%= send(field_type, label, nil, class: 'form-control') %>
-              </div>
-            </div>
-          </div>
-        <% end %>
-
-        <div class = "form-group">
-          <div class="pull-left">
-            <%= submit_tag  "Sign In", class: "btn btn-default" %>
-          </div>
-        </div>
   </div>
 </div>
