@@ -26,16 +26,12 @@
 
 
   <div class="container">
-    <% if flash[:notice]%>
-      <div class = "alert alert-success">
-        <%= flash[:notice] %>
-      </div>
-    <%end%>
-
+    <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, :id => "flash_#{name}", class: "alert alert-#{name}" %>
+    <% end %>
   </div>
 
   <%= yield %>
-
 
 
   <footer class="container">
@@ -46,10 +42,12 @@
           <div class='col-md-6 text-left'>
             <%= link_to 'About', about_path %> |
             <%= link_to 'Terms', terms_path %> |
-            <%= link_to 'FAQs', faq_path %> |
-            <%= link_to 'Tasks', tasks_path %> |
-            <%= link_to 'Users', users_path %> |
-            <%= link_to 'Projects', projects_path %>
+            <%= link_to 'FAQs', faq_path %>
+          <% if current_user %>
+            | <%= link_to 'Tasks', tasks_path %> |
+              <%= link_to 'Users', users_path %> |
+              <%= link_to 'Projects', projects_path %>
+          <% end %>
             <%= link_to image_tag('gschool.png', class: 'social'), 'https://students.gschool.it/cohorts/8/students/267' %>
             <%= link_to image_tag('tw.png', class: 'social'), 'http://www.twitter.com/GitTristan' %>
             <%= link_to image_tag('gh.png', class: 'social'), 'http://www.github.com/GitTristan' %>
