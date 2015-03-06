@@ -2,9 +2,15 @@ require 'rails_helper'
 
 feature 'Sign Up' do
 
+  before :each do
+    User.destroy_all
+  end
+
   scenario 'user can sign up' do
+
     visit root_path
     click_on 'Sign Up'
+    expect(current_path).to eq(sign_up_path)
     expect(page).to have_content("Sign up for gCamp!")
 
     fill_in :user_first_name, with: 'Test'
@@ -13,7 +19,7 @@ feature 'Sign Up' do
     fill_in :user_password, with: 'password'
     fill_in :user_password_confirmation, with: 'password'
 
-    within("form") {click_on 'Sign Up'}
+    click_button 'Sign Up'
 
     expect(current_path).to eq '/'
     expect(page).to have_content("You have successfully signed up")

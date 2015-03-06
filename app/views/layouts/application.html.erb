@@ -10,7 +10,7 @@
   <div class="container">
     <nav class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-          <%=link_to("gCamp", root_path, class:"navbar-brand") %>
+          <%= link_to "gCamp", root_path, class:"navbar-brand" %>
           <ul class="nav navbar-nav navbar-right">
             <% if current_user %>
               <li><%= link_to "#{current_user.first_name} #{current_user.last_name}", user_path(current_user) %></li>
@@ -22,6 +22,7 @@
           </ul>
       </div>
     </nav>
+  </div>
 
 
   <div class="container">
@@ -34,7 +35,7 @@
   </div>
 
   <%= yield %>
-</div>
+
 
 
   <footer class="container">
