@@ -8,12 +8,13 @@ require 'rails_helper'
 
     scenario 'Users can sign in' do
 
-      user = User.new(first_name: 'Bruce'
+      user = User.create!(
+      first_name: 'Bruce',
       last_name: 'Willis',
       email: 'bamf@diehard.com',
       password: 'quitelikeamouse',
       password_confirmation: 'quitelikeamouse')
-      user.save
+
 
       click_on 'Sign In'
       expect(page).to have_content("Sign into gCamp")

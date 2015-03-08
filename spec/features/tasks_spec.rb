@@ -62,7 +62,7 @@ feature 'Tasks' do
     scenario 'has validations' do
 
       visit new_task_path
-      fill_in :task_due_date, with "2015/03/05"
+      fill_in :task_due_date, with: "2015/03/05"
       click_button "Create Task"
       expect(page).to have_content "1 error prohibited this post from being saved:"
     end

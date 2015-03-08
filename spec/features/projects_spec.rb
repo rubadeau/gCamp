@@ -12,9 +12,11 @@ feature 'Projects' do
     name: "gSchool, yo"
     )
 
+    login
     visit projects_path
+    within ".page-header" do
     expect(page).to have_content("Projects")
-    expect(page).to have_content("gSchool, yo")
+    end
   end
 
   scenario 'create project' do
@@ -43,23 +45,23 @@ feature 'Projects' do
     expect(page).to have_content "gSchool updated, yo"
   end
 
-    scenario 'delete project' do
+  scenario 'delete project' do
 
-      project = Project.create!(
-      name: "gSchool, yo"
-      )
+    project = Project.create!(
+    name: "gSchool, yo"
+    )
 
-      visit project_path(project)
-      click_link "Delete"
-      expect(page).to have_content "Project was successfully deleted"
-    end
+    visit project_path(project)
+    click_link "Delete"
+    expect(page).to have_content "Project was successfully deleted"
+  end
 
-    scenario 'with validations' do
+  scenario 'with validations' do
 
-      visit new_projects_path
-      fill_in :project_name, with: ""
-      click_button "Create Project"
-      expect(page).to have_content "1 error prohibited this post from being saved:"
-    end
+    visit new_projects_path
+    fill_in :project_name, with: ""
+    click_button "Create Project"
+    expect(page).to have_content "1 error prohibited this post from being saved:"
+  end
 
 end
