@@ -9,7 +9,7 @@ feature 'Sign Up' do
   scenario 'user can sign up' do
 
     visit root_path
-    click_on 'Sign Up'
+    click_link 'Sign Up'
     expect(current_path).to eq(sign_up_path)
     expect(page).to have_content("Sign up for gCamp!")
 
@@ -19,7 +19,7 @@ feature 'Sign Up' do
     fill_in :user_password, with: 'password'
     fill_in :user_password_confirmation, with: 'password'
 
-    click_button 'Sign Up'
+    click_button 'Create User'
 
     expect(current_path).to eq '/'
     expect(page).to have_content("You have successfully signed up")

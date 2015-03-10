@@ -1,5 +1,5 @@
 def login(password = 'password', user = create_user)
-  visit signin_path
+  visit sign_in_path
   fill_in 'Email', with: user.email
   fill_in 'Password', with: password
   click_on 'Sign In'

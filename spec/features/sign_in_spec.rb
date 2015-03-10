@@ -15,8 +15,7 @@ require 'rails_helper'
       password: 'quitelikeamouse',
       password_confirmation: 'quitelikeamouse')
 
-
-      click_on 'Sign In'
+      click_link 'Sign In'
       expect(page).to have_content("Sign into gCamp")
 
       fill_in 'Email', with: 'bamf@diehard.com'
