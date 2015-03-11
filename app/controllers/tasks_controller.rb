@@ -2,8 +2,12 @@ class TasksController < ApplicationController
 
   before_action :authenticate_user
 
+  before_action do
+    @project = Project.find(params[:project_id])
+  end
+
   def index
-    @tasks = Task.all
+    @tasks = @project.tasks
   end
 
   def new
@@ -11,10 +15,10 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = @project.tasks.new(task_params)
     if @task.save
       flash[:success] = "Task was successfully created"
-      redirect_to task_path(@task)
+      redirect_to project_task_path(@project, @task)
     else
       render :new
     end
@@ -33,7 +37,7 @@ class TasksController < ApplicationController
 
     if @task.update(task_params)
       flash[:success] = "Task was successfully updated"
-      redirect_to task_path(@task)
+      redirect_to project_task_path(@project, @task)
     else
       render :edit
     end

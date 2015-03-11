@@ -4,6 +4,12 @@
   </div>
   <%= render partial: "shared/errors", locals: {object: @project} %>
 
+  <ol class="breadcrumb">
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Projects", projects_path %></li>
+    <li class="active">New Project</li>
+  </ol>
+
   <%= render partial: "form", locals: {button_name: "Create Project"} %>
 
 </div>

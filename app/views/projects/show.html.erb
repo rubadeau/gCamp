@@ -7,6 +7,12 @@
     <h1><%= @project.name %></h1>
   </div>
 
+  <ol class="breadcrumb">
+    <li><%= link_to "Home", root_path %></li>
+    <li><%= link_to "Projects", project_path(@project) %></li>
+    <li class="active"><%= @project.name %></li>
+  </ol>
 
+  <%= link_to "#{pluralize(@project.tasks.count, "Task")}", project_tasks_path(@project) %>
 
 </div>
