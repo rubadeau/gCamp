@@ -1,6 +1,16 @@
 <div class= "container">
-  <h3>Update Task</h3>
+  <h1>Edit Task</h1>
+
   <br />
+
+  <div>
+    <ol class="breadcrumb">
+      <li><%= link_to "Projects", projects_path %></li>
+      <li><%= link_to @project.name, project_path(@project) %>
+      <li><%=link_to "Tasks", project_tasks_path %></li>
+      <li class="active">Edit</li>
+    </ol>
+  </div>
 
     <%= render partial: "shared/errors", locals: {object: @task} %>
     <%= render partial: "form", locals: {button_name: "Update Task"} %>

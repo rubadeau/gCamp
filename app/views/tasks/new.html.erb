@@ -5,8 +5,10 @@
 
   <div>
      <ol class="breadcrumb">
-         <li><%=link_to "Tasks", project_tasks_path%></li>
-         <li class="active">New Task</li>
+       <li><%= link_to "Projects", projects_path %></li>
+       <li><%= link_to @project.name, project_path(@project) %>
+       <li><%=link_to "Tasks", project_tasks_path %></li>
+       <li class="active">New Task</li>
      </ol>
   </div>
   <%= render partial: "shared/errors", locals: {object: @task} %>

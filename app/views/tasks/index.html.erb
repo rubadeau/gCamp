@@ -3,8 +3,15 @@
     <div class="pull-right">
       <%= link_to "New Task", new_project_task_path, class: "btn btn-info" %>
     </div>
-      <h1>Tasks</h1>
+      <h1>Tasks for <%= @project.name %></h1>
     </div>
+
+    <ol class="breadcrumb">
+      <li><%= link_to "Projects", projects_path %></li>
+      <li><%= link_to @project.name, project_path(@project) %></li>
+      <li class="active">Tasks</li>
+    </ol>
+
       <table class="table">
         <thead>
           <tr>
