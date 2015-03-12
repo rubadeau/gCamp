@@ -7,15 +7,12 @@ feature 'Projects' do
   end
 
   scenario 'User can see list of projects' do
-
-    project = Project.create!(
-    name: "gSchool, yo"
-    )
+    project = Project.create!(name: "gSchool, yo")
 
     login
     visit projects_path
     within ".page-header" do
-    expect(page).to have_content("Projects")
+      expect(page).to have_content("Projects")
     end
   end
 
