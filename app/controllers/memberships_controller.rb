@@ -4,9 +4,19 @@ class MembershipsController < ApplicationController
     @project = Project.find(params[:project_id])
   end
 
-    def index
+  def index
      @membership = @project.memberships.new
    end
+
+  def create
+    @membership = @project.memberships.new(membership_params)
+    if @membership.save
+    flash[:success] = "#{@membership.user.full_name} was successfully added"
+    redirect_to project_memberships_path
+    else
+      render :index
+    end
+  end
 
   def edit
     @membership = Membership.find(params[:id])
@@ -14,19 +24,19 @@ class MembershipsController < ApplicationController
 
   def update
     @membership = Membership.find(params[:id])
-    end
-
-  def create
-    @membership = @project.memberships.new(membership_params)
-    if @membership.save
-    flash[:success] = "#{@membership.user.full_name} was successfully created"
-    redirect_to project_memberships_path
+    if @membership.update(membership_params)
+      flash[:success] = "#{@membership.user.full_name} was successfully updated"
+      redirect_to project_memberships_path
     else
       render :index
+    end
   end
- end
 
   def destroy
+    @membership = Membership.find(params[:id])
+    @membership.destroy
+    flash[:succuss] = "#{@membership.user.full_name} was removed from project"
+    redirect_to project_memberships_path
   end
 
   private
