@@ -9,7 +9,11 @@ feature 'Projects' do
   scenario 'User can see list of projects' do
     project = Project.create!(name: "gSchool, yo")
 
-    login
+    visit sign_in_path
+    fill_in 'Email', with: 'test@test.com'
+    fill_in 'Password', with: 'password'
+    click_button 'Sign In'
+
     visit projects_path
     within ".page-header" do
       expect(page).to have_content("Projects")
