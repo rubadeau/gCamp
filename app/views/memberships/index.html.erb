@@ -12,10 +12,15 @@
    <li class="active">Memberships</li>
  </ol>
 
+ <div class= "row">
+   <div class= "col-md-8">
+     <%= render partial: "shared/errors", locals: {object: @membership} %>
+   </div>
+ </div>
 
  <div class="row">
    <%= form_for [@project, @membership], html: {class: "form-inline" } do |f| %>
-     <div class='col-md-7'>
+     <div class='col-md-8'>
        <div class='well'>
          <%= f.collection_select(:user_id, User.all, :id, :full_name, {prompt: "please select a user..."},{class: 'form-control'}) %>
          <%= f.collection_select(:role, Membership::ROLE, :to_s, :to_s, {},{class: 'form-control'}) %>
