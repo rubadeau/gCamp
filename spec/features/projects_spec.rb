@@ -1,68 +1,62 @@
 require 'rails_helper'
 
-feature 'Projects' do
+feature 'Existing users can CRUD Projects' do
+  scenario 'index lists all available projects by name' do
+    project = Project.new(name: 'gSchool, yo')
+    project.save!
 
-  before :each do
-    User.destroy_all
+    sign_in_user
+    expect(page).to have_content 'Test User'
+    click_link 'Projects'
+    expect(page).to have_content "gSchool, yo"
   end
 
-  scenario 'User can see list of projects' do
-    project = Project.create!(name: "gSchool, yo")
+  scenario 'user can create new project' do
+    sign_in_user
+    expect(page).to have_content 'Test User'
+    click_link 'Projects'
+    click_link 'New Project'
+    click_button 'Create Project'
+    expect(page).to have_content 'Name can\'t be blank'
 
-    visit sign_in_path
-    fill_in 'Email', with: 'test@test.com'
-    fill_in 'Password', with: 'password'
-    click_button 'Sign In'
+    fill_in :project_name, with: 'Find Fountain of Youth'
+    click_button 'Create Project'
 
-    visit projects_path
-    within ".page-header" do
-      expect(page).to have_content("Projects")
-    end
+    expect(page).to have_content 'Find Fountain of Youth'
+    expect(page).to have_content 'Project was successfully created'
   end
 
-  scenario 'create project' do
+  scenario 'user can edit project' do
+    project = Project.new(name: 'gSchool, yo')
+    project.save!
 
-    visit new_project_path
-    fill_in :project_name, with: "You'd betta Recognize"
-    click_button "Create Project"
-
-    expect(page).to have_content("Project was successfully created!")
-    expect(page).to have_content("You'd betta Recognize")
+    sign_in_user
+    expect(page).to have_content 'Test User'
+    click_link 'Projects'
+    click_link 'gSchool, yo'
+    click_link 'Edit'
+    fill_in :project_name, with: 'gSchool, yo updated, yo'
+    click_button 'Update Project'
+    expect(page).to have_content 'gSchool, yo updated, yo'
+    expect(page).to have_content 'Project was successfully updated'
   end
 
-  scenario 'edit project' do
+  scenario 'user can delete project' do
+    project = Project.new(name: 'gSchool, yo')
+    project.save!
 
-    project = Project.create!(
-    name: "gSchool, yo"
-    )
-
-    visit projects_path
-    click_link "gSchool, yo"
-    click_link "Edit"
-    fill_in :project_name, with: "gSchool updated, yo"
-    click_button "Update Project"
-
-    expect(page).to have_content "Project was successfully updated!"
-    expect(page).to have_content "gSchool updated, yo"
+    sign_in_user
+    expect(page).to have_content 'Test User'
+    click_link 'Projects'
+    click_link 'gSchool, yo'
+    click_link 'Delete'
+    expect(page).to have_content 'Project was successfully deleted'
   end
+end
 
-  scenario 'delete project' do
-
-    project = Project.create!(
-    name: "gSchool, yo"
-    )
-
-    visit project_path(project)
-    click_link "Delete"
-    expect(page).to have_content "Project was successfully deleted"
+feature 'Users who are not signed in can not see Projects page' do
+  scenario 'user tries to see projects page and is redirected to sign_in page' do
+  visit projects_path
+  expect(page).to have_content 'You must sign in'
   end
-
-  scenario 'with validations' do
-
-    visit new_projects_path
-    fill_in :project_name, with: ""
-    click_button "Create Project"
-    expect(page).to have_content "1 error prohibited this post from being saved:"
-  end
-
 end
