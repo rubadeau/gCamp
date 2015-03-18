@@ -1,5 +1,5 @@
 class CommentsController <ApplicationController
-  before_action :set_task
+  before_action :prop_task
 
   def create
     @comment = Comment.new(comment_params.merge(task_id: params[:task_id]))
@@ -13,7 +13,7 @@ class CommentsController <ApplicationController
 
   private
 
-  def set_task
+  def prop_task
     @task = Task.find(params[:task_id])
   end
 
