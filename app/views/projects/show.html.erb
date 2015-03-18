@@ -12,7 +12,15 @@
     <li class="active"><%= @project.name %></li>
   </ol>
 
-  <%= link_to "#{pluralize(@project.tasks.count, "Task")}", project_tasks_path(@project) %>
-  <br />
-  <%= link_to "#{pluralize(@project.memberships.count, "Membership")}", project_memberships_path(@project) %>
+  <p><%= link_to "#{pluralize(@project.tasks.count, "Task")}", project_tasks_path(@project) %></p>
+
+  <p><%= link_to "#{pluralize(@project.memberships.count, "Membership")}", project_memberships_path(@project) %></p>
+
+  <div class="well">
+    <h4>Delete Project</h4>
+    <p> <%= "Deleting this project will also delete #{pluralize(@project.memberships.count, 'membership').sub(/d+s/, "") },
+        #{pluralize(@project.tasks.count, 'task').sub(/d+s/, "") } and associated comments" %></p>
+        <%= link_to 'Delete', project_path(@project), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
+  </div>
+
 </div>
