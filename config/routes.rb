@@ -8,16 +8,18 @@ Rails.application.routes.draw do
    get 'sign-in', to: 'authentication#new'
    post 'sign-in', to: 'authentication#create'
 
-
    get '/about', to: 'about#index'
    get '/terms', to: 'terms#index'
    get '/faq', to: 'common_questions#index'
-
 
    resources :users
 
    resources :projects do
      resources :tasks
-     resources :memberships
+     resources :memberships, only: [:index, :create, :update, :destroy]
+   end
+
+   resources :tasks, only: [] do
+     resources :comments, only: [:create]
    end
 end
