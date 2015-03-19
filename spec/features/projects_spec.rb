@@ -49,7 +49,7 @@ feature 'Existing users can CRUD Projects' do
     expect(page).to have_content 'Test User'
     click_link 'Projects'
     click_link 'gSchool, yo'
-    click_link 'crush'
+    click_link 'Delete'
     expect(page).to have_content 'Project was successfully deleted'
   end
 end
