@@ -1,4 +1,4 @@
-class AuthenticationController < ApplicationController
+class AuthenticationController < PublicController
 
   def new
     session[:user_id] = current_user
