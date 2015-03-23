@@ -1,5 +1,7 @@
 class MembershipsController < ApplicationController
 
+  before_action :authenticate_user
+
   before_action do
     @project = Project.find(params[:project_id])
   end
