@@ -1,4 +1,4 @@
-class AboutController < ApplicationController
+class AboutController < PublicController
   def index
     @projects = Project.all
     @tasks = Task.all
