@@ -26,6 +26,9 @@
                 <s><%= link_to task.description, project_task_path(params[:project_id], task) %></s>
               <% else %>
                 <%= link_to task.description, project_task_path(params[:project_id], task) %>
+                 <div class="badge">
+                   <%= task.comments.count %>
+                 </div>
               <% end %>
             </td>
             <td>
@@ -38,10 +41,10 @@
             <td>
               <div class= "text-right">
                 <%= link_to "Edit", edit_project_task_path(params[:project_id], task), class: "btn btn-info" %>
-                <%= link_to "Delete", project_task_path(params[:project_id], task), method: :delete, class: "btn btn-danger", data: { confirm: "Are you sure?" }  %>
+                <%= link_to "", project_task_path(params[:project_id], task), method: :delete, class: "glyphicon glyphicon-remove", data: { confirm: "Are you sure?" }  %>
               </div>
             </td>
             <% end %>
           </tr>
-      </table>
-    </div>
+    </table>
+</div>

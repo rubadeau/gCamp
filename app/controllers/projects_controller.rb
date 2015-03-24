@@ -5,8 +5,7 @@ class ProjectsController < ApplicationController
   before_action :project_member_authorization, except: [:new, :create, :index]
 
   def index
-    @projects = Project.all
-
+    @projects = current_user.memberships
   end
 
   def new

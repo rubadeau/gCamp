@@ -15,8 +15,8 @@
     </thead>
     <% @projects.each do |p| %>
     <tr>
-      <td><%= link_to p.name, project_path(p) %></td>
-      <td><%= link_to p.tasks.count, project_tasks_path(p) %></td>
+      <td><%= link_to p.project.name, project_path(p) %></td>
+      <td><%= link_to p.project.tasks.count, project_tasks_path(p) %></td>
     </tr>
     <% end %>
   </table>
