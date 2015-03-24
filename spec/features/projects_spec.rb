@@ -21,36 +21,55 @@ feature 'Existing users can CRUD Projects' do
     click_button 'Create Project'
     expect(page).to have_content 'Name can\'t be blank'
 
-    fill_in :project_name, with: 'Find Fountain of Youth'
+    fill_in :project_name, with: 'Basecamp is rad, yo'
     click_button 'Create Project'
 
-    expect(page).to have_content 'Find Fountain of Youth'
+    expect(page).to have_content 'Basecamp is rad, yo'
     expect(page).to have_content 'Project was successfully created'
   end
 
   scenario 'user can edit project' do
-    project = Project.new(name: 'gSchool, yo')
-    project.save!
-
+    User.destroy_all
     sign_in_user
     expect(page).to have_content 'Test User'
     click_link 'Projects'
-    click_link 'gSchool, yo'
+    within ".page-header" do
+      click_link 'New Project'
+    end
+
+    fill_in :project_name, with: 'gCamp is radder, yo'
+    click_button 'Create Project'
+
+    expect(page).to have_content 'gCamp is radder, yo'
+    expect(page).to have_content 'Project was successfully created'
+    within ".nav" do
+      click_link 'gCamp is radder, yo'
+    end
     click_link 'Edit'
-    fill_in :project_name, with: 'gSchool, yo updated, yo'
+    fill_in :project_name, with: 'updated'
     click_button 'Update Project'
-    expect(page).to have_content 'gSchool, yo updated, yo'
+    expect(page).to have_content 'updated'
     expect(page).to have_content 'Project was successfully updated'
   end
 
   scenario 'user can delete project' do
-    project = Project.new(name: 'gSchool, yo')
-    project.save!
-
+    User.destroy_all
     sign_in_user
     expect(page).to have_content 'Test User'
     click_link 'Projects'
-    click_link 'gSchool, yo'
+    within ".page-header" do
+      click_link 'New Project'
+    end
+
+    fill_in :project_name, with: 'gCamp is radder, yo'
+    click_button 'Create Project'
+
+    expect(page).to have_content 'gCamp is radder, yo'
+    expect(page).to have_content 'Project was successfully created'
+    within ".nav" do
+      click_link 'gCamp is radder, yo'
+    end
+
     click_link 'Delete'
     expect(page).to have_content 'Project was successfully deleted'
   end

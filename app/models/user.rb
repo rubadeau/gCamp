@@ -11,4 +11,10 @@ class User < ActiveRecord::Base
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def project_member_verify(project)
+    self.memberships.find_by(project_id: project.id) != nil
+  end
+
+
 end
