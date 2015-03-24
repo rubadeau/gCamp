@@ -2,13 +2,18 @@ require 'rails_helper'
 
 feature 'Existing users can CRUD Projects' do
   scenario 'index lists all available projects by name' do
-    project = Project.new(name: 'gSchool, yo')
-    project.save!
-
+    User.destroy_all
     sign_in_user
     expect(page).to have_content 'Test User'
     click_link 'Projects'
-    expect(page).to have_content "gSchool, yo"
+    within ".page-header" do
+      click_link 'New Project'
+    end
+
+    fill_in :project_name, with: 'first try'
+    click_button 'Create Project'
+
+    expect(page).to have_content 'first try'
   end
 
   scenario 'user can create new project' do
