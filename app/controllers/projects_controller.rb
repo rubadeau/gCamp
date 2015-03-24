@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(project_params)
     if @project.save
+      ProjectManagement.assign_current_user_as_project_owner(@project, current_user)
       flash[:success] = "Project was successfully created"
       redirect_to project_path(@project)
     else
