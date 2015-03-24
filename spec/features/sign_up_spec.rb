@@ -21,7 +21,7 @@ feature 'Sign Up' do
 
     click_button 'Sign Up'
 
-    expect(current_path).to eq '/'
+    expect(current_path).to eq '/projects'
     expect(page).to have_content("You have successfully signed up")
     expect(page).to have_content('Test User')
     expect(page).to have_no_content( 'Sign Up')

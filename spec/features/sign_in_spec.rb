@@ -15,10 +15,8 @@ require 'rails_helper'
       password: 'quitelikeamouse',
       password_confirmation: 'quitelikeamouse')
 
-      visit root_path
-      expect(page).to have_content 'Your life, organized'
+      visit sign_in_path
 
-      click_link 'Sign In'
       expect(current_path).to eq '/sign-in'
       expect(page).to have_content 'Sign into gCamp'
       click_button 'Sign In'
@@ -28,8 +26,8 @@ require 'rails_helper'
       fill_in "Password", with: 'quitelikeamouse'
       click_button 'Sign In'
 
-      expect(current_path).to eq root_path
-      expect(page).to have_content 'Your life, organized'
+      expect(current_path).to eq projects_path
+      expect(page).to have_content 'Bruce Willis'
       expect(page).to have_content 'You have successfully signed in'
     end
 

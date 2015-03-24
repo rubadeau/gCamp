@@ -11,7 +11,8 @@ require 'rails_helper'
       sign_in_user
 
       expect(page).to have_content("Test User")
-      click_on 'Sign out'
+
+      click_on 'Sign Out'
 
       expect(page).to have_content 'Sign In'
       expect(page).to have_content("You have successfully logged out")
