@@ -15,7 +15,9 @@ feature 'Existing users can CRUD Projects' do
     sign_in_user
     expect(page).to have_content 'Test User'
     click_link 'Projects'
-    click_link 'New Project'
+    within ".page-header" do
+      click_link 'New Project'
+    end
     click_button 'Create Project'
     expect(page).to have_content 'Name can\'t be blank'
 
