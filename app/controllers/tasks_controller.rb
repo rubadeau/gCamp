@@ -1,6 +1,9 @@
 class TasksController < ApplicationController
 
+  before_action :target_project
   before_action :authenticate_user
+  before_action :project_member_authorization
+
 
   before_action do
     @project = Project.find(params[:project_id])
@@ -56,4 +59,9 @@ class TasksController < ApplicationController
   def task_params
     params.require(:task).permit(:description, :complete, :due_date, :project_id)
   end
+
+  def target_project
+    @project = Project.find(params[:project_id])
+  end
+
 end

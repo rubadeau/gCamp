@@ -17,5 +17,4 @@ class User < ActiveRecord::Base
     self.memberships.find_by(project_id: project.id) != nil
   end
 
-
 end

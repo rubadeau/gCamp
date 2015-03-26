@@ -52,15 +52,15 @@ class ProjectsController < ApplicationController
       params.require(:project).permit(:name)
     end
 
+    def target_project
+      @project = Project.find(params[:id])
+    end
+
     def project_member_authorization
       unless current_user.project_member_verify(@project)
         flash[:danger] = 'You do not have access to that project'
         redirect_to projects_path
       end
-    end
-
-    def target_project
-      @project = Project.find(params[:id])
     end
 
 end
