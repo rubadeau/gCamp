@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
 
   before_action :target_project, except: [:new, :create, :index]
   before_action :authenticate_user
-  # before_action :project_member_authorization, except: [:new, :create, :index]
+  before_action :project_member_authorization, except: [:new, :create, :index]
 
   def index
   end
