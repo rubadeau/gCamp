@@ -2,7 +2,7 @@ class ProjectManagement
 
 
    def self.assign_current_user_as_project_owner(project, user)
-	   project.memberships.create(user: user, role: 'Owner')
+	   project.memberships.create(user: user, role: 'owner')
 	 end
 
 

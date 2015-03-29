@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def project_owner_verify(project)
-    self.memberships.find_by(project_id: project.id).role == "owner"
+    self.memberships.find_by(project_id: project.id).role == "Owner"
   end
 
 end

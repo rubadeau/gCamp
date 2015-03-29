@@ -3,7 +3,7 @@ class MembershipsController < ApplicationController
   before_action :target_project
   before_action :authenticate_user
   before_action :project_member_authorization
-
+  before_action :project_owner_authorization, except: [:index]
 
   before_action do
     @project = Project.find(params[:project_id])

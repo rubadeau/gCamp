@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :authenticate_user
+  helper_method :project_owner_authorization
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -30,8 +31,4 @@ class ApplicationController < ActionController::Base
       redirect_to project_path(@project)
     end
   end
-
-
-
-
 end

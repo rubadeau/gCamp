@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
 
-  before_action :target_project, except: [:new, :create, :index]
   before_action :authenticate_user
+  before_action :target_project, except: [:new, :create, :index]
   before_action :project_member_authorization, except: [:new, :create, :index]
   before_action :project_owner_authorization, only: [:edit, :update, :destroy]
 
@@ -55,20 +55,6 @@ class ProjectsController < ApplicationController
 
     def target_project
       @project = Project.find(params[:id])
-    end
-
-    def project_member_authorization
-      unless current_user.project_member_verify(@project)
-        flash[:danger] = 'You do not have access to that project'
-        redirect_to projects_path
-      end
-    end
-
-    def project_owner_authorization
-      unless current_user.project_owner_verify(@project)
-        flash[:danger] = 'You do not have access'
-        redirect_to project_path(@project)
-      end
     end
 
 end
