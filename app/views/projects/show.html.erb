@@ -1,7 +1,11 @@
 <div class="container">
   <div class="page-header">
     <div class="pull-right">
-    <%= link_to "Edit", edit_project_path(@project), class: "btn btn-info" %>
+      <% if current_user.project_owner_verify(@project) %>
+      <div class= 'pull-right'>
+        <%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-info'%>
+      </div>
+      <% end %>
   </div>
     <h1><%= @project.name %></h1>
   </div>
@@ -15,11 +19,12 @@
 
   <p><%= link_to "#{pluralize(@project.memberships.count, "Membership")}", project_memberships_path(@project) %></p>
 
-  <div class="well">
-    <h4>Delete Project</h4>
-    <p> <%= "Deleting this project will also delete #{pluralize(@project.memberships.count, 'membership') },
-        #{pluralize(@project.tasks.count, 'task') } and associated comments" %></p>
+  <% if current_user.project_owner_verify(@project) %>
+    <div class="well">
+      <h4>Delete Project</h4>
+        <p> <%= "Deleting this project will also delete #{pluralize(@project.memberships.count, 'membership') },
+          #{pluralize(@project.tasks.count, 'task') } and associated comments" %></p>
         <%= link_to 'Delete', project_path(@project), method: :delete, data: {confirm: "Are you sure?"}, class: 'btn btn-danger' %>
-  </div>
-
+      </div>
+  <% end %>
 </div>

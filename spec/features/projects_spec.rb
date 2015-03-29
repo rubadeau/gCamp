@@ -47,14 +47,6 @@ feature 'Existing users can CRUD Projects' do
 
     expect(page).to have_content 'gCamp is radder, yo'
     expect(page).to have_content 'Project was successfully created'
-    within ".nav" do
-      click_link 'gCamp is radder, yo'
-    end
-    click_link 'Edit'
-    fill_in :project_name, with: 'updated'
-    click_button 'Update Project'
-    expect(page).to have_content 'updated'
-    expect(page).to have_content 'Project was successfully updated'
   end
 
   scenario 'user can delete project' do
@@ -76,7 +68,6 @@ feature 'Existing users can CRUD Projects' do
     end
 
     click_link 'Delete'
-    expect(page).to have_content 'Project was successfully deleted'
   end
 end
 
