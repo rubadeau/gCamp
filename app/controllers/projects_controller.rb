@@ -6,6 +6,7 @@ class ProjectsController < ApplicationController
   before_action :project_owner_or_admin_authorization, only: [:edit, :update, :destroy]
 
   def index
+    @project = Project.all
   end
 
   def new
