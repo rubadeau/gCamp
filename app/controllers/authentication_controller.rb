@@ -9,7 +9,12 @@ class AuthenticationController < PublicController
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       flash[:success] ="You have successfully signed in"
-      redirect_to projects_path
+        if session[:request_path]
+          redirect_to session[:request_path]
+          session[:request_path] = nil
+        else
+          redirect_to projects_path
+        end
     else
       @sign_in_error = "Email / Password combination is invalid"
       render :new
