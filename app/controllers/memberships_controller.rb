@@ -4,6 +4,7 @@ class MembershipsController < ApplicationController
   before_action :authenticate_user
   before_action :project_member_authorization
   before_action :project_owner_authorization, except: [:index]
+  before_action :project_must_have_at_least_one_owner, only: [:update, :destroy]
 
   before_action do
     @project = Project.find(params[:project_id])
@@ -52,6 +53,13 @@ class MembershipsController < ApplicationController
 
     def target_project
       @project = Project.find(params[:project_id])
+    end
+
+    def project_must_have_at_least_one_owner
+      if @membership.role == 'Owner' && @project.memberships.where(role: 'Owner').count <= 1
+        flash[:warning] = "Projects must have at least one owner"
+        redirect_to project_memberships_path(@project)
+      end
     end
 
 
