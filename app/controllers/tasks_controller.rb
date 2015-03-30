@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 
   before_action :target_project
   before_action :authenticate_user
-  before_action :project_member_authorization
+  before_action :project_member_or_admin_authorization
 
 
   before_action do

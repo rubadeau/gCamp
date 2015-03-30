@@ -5,7 +5,6 @@ class ApplicationController < ActionController::Base
 
   helper_method :current_user
   helper_method :authenticate_user
-  helper_method :project_owner_authorization
 
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -18,15 +17,15 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def project_member_authorization
-    unless current_user.project_member_verify(@project)
+  def project_member_or_admin_authorization
+    unless (current_user.project_member_verify(@project) || current_user.admin)
       flash[:danger] = 'You do not have access to that project'
       redirect_to projects_path
     end
   end
 
-  def project_owner_authorization
-    unless current_user.project_owner_verify(@project)
+  def project_owner_or_admin_authorization
+    unless (current_user.project_owner_verify(@project) || current_user.admin)
       flash[:danger] = 'You do not have access'
       redirect_to project_path(@project)
     end

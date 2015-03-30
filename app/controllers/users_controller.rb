@@ -53,11 +53,15 @@ private
   end
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    if current_user.admin
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :admin)
+    else
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    end
   end
 
   def verify_user_access
-    unless current_user == @user
+    unless current_user == @user || current_user.admin
       render file: 'public/404.html', status: :not_found, layout: false
     end
   end
