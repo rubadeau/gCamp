@@ -12,14 +12,16 @@
             <th>Email</th>
           </tr>
         </thead>
-        <% @users.each do |user| %>
+          <% @users.each do |user| %>
           <tr>
             <td><%= link_to user.first_name+" "+user.last_name, user_path(user) %>
             </td>
             <td><%= mail_to user.email %>
             </td>
-            <td><%= link_to "Edit", edit_user_path(user), class: "pull-right" %>
-            <% end %>
+            <td><% if current_user == user %>
+                  <%= link_to "Edit", edit_user_path(user), class: "pull-right" %>
+                <% end %>
+              <% end %>
           </tr>
       </table>
     </div>

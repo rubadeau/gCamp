@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   before_action :authenticate_user
   before_action :set_user, except: [:index, :new, :create]
+  before_action :verify_user_access, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -53,6 +54,12 @@ private
 
   def user_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  end
+
+  def verify_user_access
+    unless current_user == @user
+      render file: 'public/404.html', status: :not_found, layout: false
+    end
   end
 
 end
