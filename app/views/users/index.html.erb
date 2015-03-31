@@ -16,7 +16,7 @@
           <tr>
             <td><%= link_to user.first_name+" "+user.last_name, user_path(user) %>
             </td>
-            <td><% if current_user == user || current_user.admin %>
+            <td><% if current_user == user || current_user.admin  %>
                   <%= mail_to user.email %>
                 <% end %>
             </td>

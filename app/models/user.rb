@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
     self.memberships.find_by(project_id: project.id).role == "Owner"
   end
 
-  
+  def project_member_of(user)
+    user.projects.map(&:users).flatten.include?(self)
+  end
+
 
 end
