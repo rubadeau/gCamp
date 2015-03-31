@@ -9,7 +9,7 @@ describe UsersController do
       expect(assigns(:users)).to eq [(user)]
     end
 
-    it "renders :index template" do
+    it ":index template" do
       user = create_user
       session[:user_id] = user.id
       get :index
