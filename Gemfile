@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
   gem 'bootstrap-sass', '~> 3.3.3'
   gem 'rails_12factor', group: :production
   gem 'rails', '4.2.0'
@@ -10,6 +11,8 @@ source 'https://rubygems.org'
   gem 'jbuilder', '~> 2.0'
   gem 'sdoc', '~> 0.4.0', group: :doc
   gem 'bcrypt', '~> 3.1.7'
+  gem 'faraday', '~> 0.9.1'
+
 group :development, :test do
   gem 'rspec-rails'
   gem "capybara"

@@ -30,4 +30,28 @@
       <% end %>
     <% end %>
   </table>
+
+
+  <div class="page-header">
+    <div class="pull-right">
+    </div>
+    <h1>Pivotal Tracker Projects</h1>
+  </div>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><strong>Name</strong></th>
+      </tr>
+    </thead>
+
+    <% if current_user.admin  %>
+      <% @tracker_projects.each do |project| %>
+      <tr>
+        <td><%= link_to project[:name] %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </table>
+
 </div>
