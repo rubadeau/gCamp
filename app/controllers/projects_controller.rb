@@ -15,8 +15,6 @@ class ProjectsController < ApplicationController
         flash[:danger] = "Looks like you have an invalid Pivotal Tracker Token.  Please update to view your connected projects"
         @tracker_projects = {}
       end
-    else
-      @tracker_projects = {}
     end
   end
 
