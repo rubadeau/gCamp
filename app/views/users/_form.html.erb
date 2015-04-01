@@ -38,6 +38,13 @@
      </div>
    </div>
 
+   <div class="form-group">
+     <%= f.label :pivotal_tracker_token, class: "col-md-2 control-label" %>
+     <div class="col-md-6">
+       <%= f.text_field :pivotal_tracker_token, class: "col-md-5 form-control" %>
+     </div>
+   </div>
+
    <% if current_user.admin %>
     <div class="form-group">
       <div class="col-md-10 col-md-offset-2">
