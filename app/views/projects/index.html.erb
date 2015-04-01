@@ -45,12 +45,10 @@
       </tr>
     </thead>
 
-    <% if current_user.admin  %>
       <% @tracker_projects.each do |project| %>
       <tr>
         <td><%= link_to project[:name] %></td>
       </tr>
-      <% end %>
     <% end %>
   </table>
 
