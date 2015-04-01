@@ -13,6 +13,7 @@ Rails.application.routes.draw do
    get '/faq', to: 'common_questions#index'
 
    resources :users
+   resources :tracker_projects, only:[:show]
 
    resources :projects do
      resources :tasks

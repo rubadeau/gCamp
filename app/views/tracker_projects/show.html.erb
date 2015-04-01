@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div class="page-header">
+    <div class="pull-right">
+    </div>
+    <h1>Stories for <%= @project %></h1>
+  </div>
+
+  <table class='table'>
+    <thead>
+      <tr>
+        <th><strong>Name</strong></th>
+        <th><strong>Estimate</strong></th>
+        <th><strong>Labels</strong></th>
+        <th><strong>Current State</strong></th>
+      </tr>
+    </thead>
+      <% @stories.each do |stories| %>
+      <tr>
+        <td><%= stories[:name] %></td>
+        <td><%= stories[:estimate] %></td>
+        <td><%= stories[:labels].map {|hash| hash[:name] }.join(", ") %></td>
+        <td><%= stories[:current_state] %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
