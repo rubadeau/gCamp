@@ -17,7 +17,11 @@
       <dd><%= mail_to @user.email %></dd>
     <% end %>
     <dt>Pivotal Tracker Token</dt>
-    <dd><%= "#{@user.pivotal_tracker_token.to_s.slice!(0..3)}*************************" %></dd>
+    <% if @user.pivotal_tracker_token %>
+      <dd><%= "#{@user.pivotal_tracker_token.to_s.slice!(0..3)}*************************" %></dd>
+    <% else %>
+      <dd></dd>
+    <% end %>
   </dl>
 
 </div>
