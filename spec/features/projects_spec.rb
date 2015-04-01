@@ -6,7 +6,7 @@ feature 'Existing users can CRUD Projects' do
     sign_in_user
     expect(page).to have_content 'Test User'
     click_link 'Projects'
-    within ".page-header" do
+    within (".top_header") do
       click_link 'New Project'
     end
 
@@ -20,7 +20,7 @@ feature 'Existing users can CRUD Projects' do
     sign_in_user
     expect(page).to have_content 'Test User'
     click_link 'Projects'
-    within ".page-header" do
+    within (".top_header") do
       click_link 'New Project'
     end
     click_button 'Create Project'
@@ -38,7 +38,7 @@ feature 'Existing users can CRUD Projects' do
     sign_in_user
     expect(page).to have_content 'Test User'
     click_link 'Projects'
-    within ".page-header" do
+    within (".top_header") do
       click_link 'New Project'
     end
 
@@ -54,7 +54,7 @@ feature 'Existing users can CRUD Projects' do
     sign_in_user
     expect(page).to have_content 'Test User'
     click_link 'Projects'
-    within ".page-header" do
+    within (".top_header") do
       click_link 'New Project'
     end
 

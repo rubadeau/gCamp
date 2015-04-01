@@ -1,36 +1,37 @@
 <div class="container">
   <div class="page-header">
-    <div class="pull-right">
-      <%= link_to "New Project", new_project_path, class: "btn btn-info" %>
+    <div class="top_header">
+      <div class="pull-right">
+        <%= link_to "New Project", new_project_path, class: "btn btn-info" %>
+      </div>
+      <h1>Projects</h1>
     </div>
-    <h1>Projects</h1>
+
+    <table class='table'>
+      <thead>
+        <tr>
+          <th><strong>Name</strong></th>
+          <th><stong>Tasks</strong></th>
+        </tr>
+      </thead>
+
+      <% if current_user.admin  %>
+        <% @project.each do |project| %>
+        <tr>
+          <td><%= link_to project.name, project_path(project) %></td>
+          <td><%= link_to project.tasks.count, project_tasks_path(project) %></td>
+        </tr>
+        <% end %>
+      <% else %>
+        <% current_user.projects.each do |project| %>
+        <tr>
+          <td><%= link_to project.name, project_path(project) %></td>
+          <td><%= link_to project.tasks.count, project_tasks_path(project) %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </table>
   </div>
-
-  <table class='table'>
-    <thead>
-      <tr>
-        <th><strong>Name</strong></th>
-        <th><stong>Tasks</strong></th>
-      </tr>
-    </thead>
-
-    <% if current_user.admin  %>
-      <% @project.each do |project| %>
-      <tr>
-        <td><%= link_to project.name, project_path(project) %></td>
-        <td><%= link_to project.tasks.count, project_tasks_path(project) %></td>
-      </tr>
-      <% end %>
-    <% else %>
-      <% current_user.projects.each do |project| %>
-      <tr>
-        <td><%= link_to project.name, project_path(project) %></td>
-        <td><%= link_to project.tasks.count, project_tasks_path(project) %></td>
-      </tr>
-      <% end %>
-    <% end %>
-  </table>
-
 
   <div class="page-header">
     <div class="pull-right">
@@ -44,11 +45,12 @@
         <th><strong>Name</strong></th>
       </tr>
     </thead>
-      <% @tracker_projects.each do |project| %>
-      <tr>
-        <td><%= link_to project[:name], tracker_project_path(project[:id],project_name: project[:name]) %></td>
-      </tr>
+      <% if current_user.pivotal_tracker_token %>
+        <% @tracker_projects.each do |project| %>
+        <tr>
+          <td><%= link_to project[:name], tracker_project_path(project[:id],project_name: project[:name]) %></td>
+        </tr>
+      <% end %>
     <% end %>
   </table>
-
 </div>

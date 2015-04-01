@@ -7,8 +7,10 @@ class ProjectsController < ApplicationController
 
   def index
     @project = Project.all
-    tracker_api = TrackerAPI.new
-    @tracker_projects = tracker_api.projects(current_user.pivotal_tracker_token)
+    if current_user.pivotal_tracker_token
+      tracker_api = TrackerAPI.new
+      @tracker_projects = tracker_api.projects(current_user.pivotal_tracker_token)
+    end
   end
 
   def new
