@@ -7,9 +7,16 @@ class ProjectsController < ApplicationController
 
   def index
     @project = Project.all
+    tracker_api = TrackerAPI.new
     if current_user.pivotal_tracker_token
-      tracker_api = TrackerAPI.new
+      if tracker_api.projects(current_user.pivotal_tracker_token).class == Array
       @tracker_projects = tracker_api.projects(current_user.pivotal_tracker_token)
+      else
+        flash[:danger] = "Looks like you have an invalid Pivotal Tracker Token.  Please update to view your connected projects"
+        @tracker_projects = {}
+      end
+    else
+      @tracker_projects = {}
     end
   end
 
